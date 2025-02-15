@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-api
+  template:
+    metadata:
+      labels:
+        app: php-api
+    spec:
+      containers:
+      - name: php-api
+        image: 585768154858.dkr.ecr.ap-northeast-1.amazonaws.com/php-api:latest  # ECRのイメージを使う
+        ports:
+        - containerPort: 8000
